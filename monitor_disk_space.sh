@@ -12,7 +12,7 @@ MAILGUN_FROM='server1@mg.example.com'
 MAILGUN_TO='admin@example.com'
 MAILGUN_SUBJECT='Disk Space Alert on Server'
 
-DISK_USAGE=$(df -h | grep "$DISK_DEVICE" | awk '{ print $5 }' | sed 's/%//g')
+DISK_USAGE=$(df -h "$DISK_DEVICE" | grep "$DISK_DEVICE" | awk '{ print $5 }' | sed 's/%//g')
 
 if [ "$DISK_USAGE" -ge "$THRESHOLD" ]; then
     SERVER_NAME=$(hostname)
